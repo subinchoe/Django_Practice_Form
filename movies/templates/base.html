@@ -7,6 +7,8 @@
   <title>MOVIE_INFO</title>
 </head>
 <body>
+  <a href="{% url 'movies:index' %}">INDEX</a>
+  <a href="{% url 'movies:create' %}">CREATE_MODEL_FORM</a>
   <div class="container">
     {% block body %}
     {% endblock %}
