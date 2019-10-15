@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MovieForm
+from .models import Movie
 
 # Create your views here.
 def index(request):
@@ -20,3 +21,12 @@ def create(request):
     }
 
     return render(request, 'form.html', context)
+
+def detail(request, id):
+    movie = get_object_or_404(Movie, id=id)
+
+    context={
+        'movie': movie,
+    }
+
+    return render(request, 'detail.html', context)
