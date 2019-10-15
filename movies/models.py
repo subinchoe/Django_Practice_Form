@@ -11,3 +11,7 @@ class Movie(models.Model):
     open_date = models.DateField()
     poster_url = models.TextField()
     description = models.TextField()
+
+class Comment(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    contents = models.CharField(max_length=100)
