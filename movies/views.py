@@ -5,4 +5,7 @@ def index(request):
     return render(request, 'index.html')
 
 def create(request):
-    pass
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, 'form.html')
