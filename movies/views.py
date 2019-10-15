@@ -56,3 +56,14 @@ def update(request, id):
     }
     
     return render(request, 'form.html', context)
+
+def delete(request, id):
+    movie = get_object_or_404(Movie, id=id)
+    
+    if request.method == "POST":
+        movie.delete()
+
+        return redirect('movies:index')
+    else:
+
+        return redirect('movies:detail', id)
