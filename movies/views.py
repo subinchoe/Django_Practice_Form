@@ -19,4 +19,4 @@ def create(request):
         'form': form,
     }
 
-    return render(request, 'form.html')
+    return render(request, 'form.html', context)
