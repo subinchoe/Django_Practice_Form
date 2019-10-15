@@ -36,3 +36,23 @@ def detail(request, id):
     }
 
     return render(request, 'detail.html', context)
+
+def update(request, id):
+    movie = get_object_or_404(Movie, id=id)
+
+    if request.method == "POST":
+        form = MovieForm(request.POST, instance=movie)
+        
+        if form.is_valid():
+            form.save()
+
+            return redirect('movies:detail', id)
+
+    else:
+        form = MovieForm(instance=movie)
+
+    context = {
+        'form': form,
+    }
+    
+    return render(request, 'form.html', context)
