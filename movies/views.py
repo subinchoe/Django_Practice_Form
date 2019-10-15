@@ -4,7 +4,13 @@ from .models import Movie
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    movies = Movie.objects.all()
+    
+    context = {
+        'movies': movies,
+    }
+
+    return render(request, 'index.html', context)
 
 def create(request):
     if request.method == "POST":
@@ -25,7 +31,7 @@ def create(request):
 def detail(request, id):
     movie = get_object_or_404(Movie, id=id)
 
-    context={
+    context = {
         'movie': movie,
     }
 

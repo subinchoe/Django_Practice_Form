@@ -2,4 +2,10 @@
 
 {% block body %}
   <h1>INDEX_PAGE</h1>
+
+  {% for movie in movies %}
+    <h3>{{movie.title}}</h3>
+    <a href="{% url 'movies:detail' movie.id%}">More</a>
+    <hr>
+  {% endfor %}
 {% endblock %}
