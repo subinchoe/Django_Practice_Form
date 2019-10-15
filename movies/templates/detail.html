@@ -20,6 +20,6 @@
   </form>
 
   {% for comment in movie.comment_set.all %}
-    <h5>{{comment.comment}}</h5>
+    <h5>{{comment.contents}}</h5>
   {% endfor %}
 {% endblock %}
