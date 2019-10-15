@@ -2,12 +2,24 @@
 
 {% block body %}
   <h1>DETAIL_PAGE</h1>
+
   <h3>{{movie.title}}</h3>
   <h3>{{movie.score}}</h3>
+
   <a href="{% url 'movies:update' movie.id %}">EDIT</a>
   <!-- <a href="{#{% url 'movies:delete' movie.id %}#}">DELETE</a> -->
   <form action="{% url 'movies:delete' movie.id %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="DELETE">
   </form>
+
+  <form action="{% url 'movies:create_comment' movie.id %}" method="POST">
+    {% csrf_token %}
+    <p>{{comment_form.as_p}}</p>
+    <input type="submit">
+  </form>
+
+  {% for comment in movie.comment_set.all %}
+    <h5>{{comment.comment}}</h5>
+  {% endfor %}
 {% endblock %}
